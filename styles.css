@@ -282,6 +282,17 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    min-width: 0;
+    /* Fix for grid overflow */
+    max-width: 100%;
+}
+
+/* Fix CSS grid overflow and right scrolling */
+.table-card pre,
+.code-block pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
 }
 
 .table-header {
