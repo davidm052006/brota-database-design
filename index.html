@@ -258,14 +258,51 @@
                 <p>Las bases de datos no son estáticas. En Brota tomamos decisiones responsables con la información.</p>
             </div>
 
-            <div class="code-showcase glass-card fade-in-up style-code">
-                <div class="code-block">
-                    <h4>📝 Ejemplo de Inserción (INSERT)</h4>
-                    <p>Usado para inicializar la información base (**Seeds**) probando la solidez de las llaves
-                        foráneas.</p>
-                    <pre><code>INSERT INTO programas (id, institucion_id, nombre, costo_matricula, activo)
-VALUES ('e23f5...', 'fa3a7...', 'Ingeniería de Software', 3500000, TRUE);</code></pre>
+            <!-- Nuevos Inserts Reales -->
+            <div class="glass-card fade-in-up" style="margin-bottom: 2rem;">
+                <div class="code-block" style="padding: 1rem;">
+                    <h4>📝 Población Inicial de Datos (Seeds)</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                        A continuación, se presenta la colección de <strong>INSERTs reales</strong> que se inytectará en
+                        vivo durante el despliegue del MVP para validar la robustez de las constraints.
+                    </p>
+                    <pre style="max-height: 400px; overflow-y: auto; overflow-x: auto; font-size: 0.8rem;"><code>-- ============================================
+-- SCRIPT DE INSERCIÓN DATOS REALES
+-- ============================================
+
+INSERT INTO perfiles_usuario (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, edad, genero, nivel_educativo) 
+VALUES 
+    ('Santiago', 'Andrés', 'Castillo', 'Mendoza', 16, 'Masculino', 'Grado 10'),
+    ('Valentina', NULL, 'Osorio', 'Navarro', 17, 'Femenino', 'Grado 11'),
+    ('Mateo', 'Alejandro', 'Giraldo', 'Ríos', 15, 'Masculino', 'Grado 10'),
+    ('Isabella', 'Sofía', 'Pineda', 'Salazar', 17, 'Femenino', 'Grado 11');
+
+INSERT INTO instituciones_educativas (nombre, tipo, ciudad, direccion, telefono, email, sitio_web, costo_promedio, activa) 
+VALUES 
+    ('Colegio San Patricio', 'Privado', 'Bogotá', 'Calle 123...', '6011234567', 'contacto@sanpatricio.edu.co', '...', 1500000, true),
+    ('Liceo Campestre', 'Privado', 'Chía', 'Vía GuaymaralKm 2', '3105551234', 'admisiones@liceocampestre.edu.co', '...', 2200000, true),
+    ('Institución Educativa Nacional', 'Público', 'Medellín', 'Carrera 50...', '6049876543', 'info@ienacional...co', NULL, 50000, false);
+
+INSERT INTO programas (nombre, descripcion, icono, activa) 
+VALUES 
+    ('Matemáticas', 'Estudio de los números, álgebra, geometría...', 'fas fa-calculator', true),
+    ('Ciencias Naturales', 'Comprensión del mundo físico...', 'fas fa-flask', true),
+    ('Tecnología e Informática', 'Programación y lógica', 'fas fa-laptop-code', true);
+
+INSERT INTO convocatorias (nombre, fecha_apertura, fecha_cierre, cupos, informacion_adicional, activa)
+VALUES 
+    ('Jóvenes a la U - Semestre 2026-2', '2026-05-01', '2026-06-15', 4000, 'Programa integral...', true),
+    ('Convocatoria SENA - Modalidad Virtual', '2026-04-01', '2026-04-15', 15000, 'Formación técnica...', true);
+
+INSERT INTO cuestionario (nombre, version, descripcion, activo)
+VALUES 
+    ('Test de Orientación Vocacional Holland', 'v2.1', 'Cuestionario clásico Holland...', true),
+    ('Test Rápido: Descubre tu Vocación', '2026.1', 'Versión corta de 15 preguntas...', true);</code></pre>
                 </div>
+            </div>
+
+            <!-- Soft Delete Showcase -->
+            <div class="code-showcase glass-card fade-in-up style-code delay-1">
                 <div class="code-block">
                     <h4>⚡ Soft Deletes (UPDATE vs DELETE)</h4>
                     <p>En el mundo real **casi nunca usamos DELETE**. Si una carrera se canceló en Brota, aplicamos un
