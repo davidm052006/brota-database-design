@@ -254,69 +254,95 @@ h4 {
 /* Grid Larga para Tablas DETALLADAS */
 .grid-cards-large {
     display: grid;
-    /* Ajustado para que las cartas ocupen más y dejen ver el schema */
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* Forzar que se vean en cuadritos y no uno debajo del otro */
+@media (min-width: 640px) {
+    .grid-cards-large {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-cards-large {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .grid-cards-large {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .table-card {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
 .table-header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .table-header h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     color: #fff;
     font-family: var(--font-mono);
+    word-break: break-all;
 }
 
 .table-desc {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
-/* Estilos para SCHEMA LIST */
+/* Estilos para SCHEMA LIST compactos */
 .schema-list {
     list-style: none;
     margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-glass);
+    padding-top: 0.5rem;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.2rem;
 }
 
 .schema-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.2rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 0.3rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-.schema-list li:last-child {
-    border-bottom: none;
+.schema-list li:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 255, 136, 0.2);
 }
 
 /* Colores de las columnas */
 .col-pk {
     color: var(--primary);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .col-fk {
     color: var(--secondary);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .col-normal {
@@ -330,10 +356,12 @@ h4 {
 
 .col-type {
     color: #94a3b8;
-    font-size: 0.75rem;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.1rem 0.4rem;
+    font-size: 0.65rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.15rem 0.3rem;
     border-radius: 4px;
+    margin-left: 0.5rem;
+    text-align: right;
 }
 
 /* Code Showcase*/
