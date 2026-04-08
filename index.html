@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <meta name="description" content="Presentación del modelo de base de datos del proyecto Brota.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <div class="background-effects">
@@ -20,10 +24,10 @@
     <!-- Navegación -->
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo">🪴 Brota <span class="badge">DB Design</span></div>
+            <div class="logo">🪴 Brota <span class="badge">MVP DB</span></div>
             <ul class="nav-links">
                 <li><a href="#intro">Introducción</a></li>
-                <li><a href="#tables">Estructura</a></li>
+                <li><a href="#tables">Esquema Físico</a></li>
                 <li><a href="#dml">Operaciones</a></li>
                 <li><a href="#queries">Consultas</a></li>
                 <li><a href="#exposition">Exposición</a></li>
@@ -36,13 +40,13 @@
         <section id="intro" class="hero">
             <div class="hero-content fade-in-up">
                 <h1 class="gradient-text">El Motor de Decisión Vocacional</h1>
-                <p class="subtitle">Descubre la arquitectura de datos relacional detrás de Brota (anteriormente Synapse). Construido para conectar el talento de los jóvenes con las instituciones y programas de sus sueños.</p>
+                <p class="subtitle">Descubre el diseño físico y la arquitectura de datos detrás de Brota MVP. 8 Tablas
+                    altamente normalizadas aseguradas con políticas RLS para garantizar matches perfectos.</p>
                 <div class="hero-buttons">
-                    <a href="#tables" class="btn btn-primary">Ver Arquitectura</a>
-                    <a href="schema.sql" target="_blank" class="btn btn-secondary">Ver Script DDL</a>
+                    <a href="#tables" class="btn btn-primary">Ver Esquema de Datos</a>
                 </div>
             </div>
-            
+
             <div class="hero-cards fade-in-up delay-1">
                 <div class="glass-card stat-card">
                     <span class="icon">📊</span>
@@ -50,14 +54,14 @@
                     <p>Integridad Referencial Absoluta</p>
                 </div>
                 <div class="glass-card stat-card">
-                    <span class="icon">⚡</span>
-                    <h3>Performance</h3>
-                    <p>Búsquedas optimizadas con JSONB</p>
+                    <span class="icon">🔒</span>
+                    <h3>Seguridad RLS</h3>
+                    <p>Row Level Security integrada</p>
                 </div>
                 <div class="glass-card stat-card">
-                    <span class="icon">🎯</span>
-                    <h3>Recomendaciones</h3>
-                    <p>Matches precisos Usuario ↔ Programa</p>
+                    <span class="icon">✨</span>
+                    <h3>JSONB Activo</h3>
+                    <p>Manejo dinámico de respuestas</p>
                 </div>
             </div>
         </section>
@@ -65,82 +69,184 @@
         <!-- Tablas de BD -->
         <section id="tables" class="section">
             <div class="section-header fade-in-up">
-                <h2>🧱 Estructura de la Base de Datos</h2>
-                <p>Ocho tablas fundamentales que orquestan desde el registro del estudiante hasta el match de su carrera.</p>
+                <h2>🧱 Esquema Físico Detallado</h2>
+                <p>Las 8 tablas núcleo modeladas en Supabase (PostgreSQL) con todos sus tipos de datos, constraints y
+                    claves.</p>
             </div>
 
-            <div class="grid-cards">
-                <!-- Card 1 -->
+            <!-- Nuevo Grid, más amplio para acomodar tipos de datos -->
+            <div class="grid-cards-large">
+                <!-- 1. Perfiles Usuario -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">👥</span>
-                        <h3>PERFILES_USUARIO</h3>
+                        <h3>perfiles_usuario</h3>
                     </div>
-                    <p>Identidad del estudiante. Su ciudad, condiciones socioeconómicas (alojadas en JSONB para alta flexibilidad) y detalles demográficos.</p>
-                    <div class="kb-tag">UUID PK</div>
+                    <p class="table-desc">Identidad del estudiante. Sus condiciones socioeconómicas y detalles
+                        demográficos vitales.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 user_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">nombre</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">apellido</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">edad</span> <span class="col-type">INTEGER</span></li>
+                        <li><span class="col-normal">ciudad</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">nivel_educativo</span> <span class="col-type">VARCHAR(100)</span>
+                        </li>
+                        <li><span class="col-normal">condiciones_socioec...</span> <span class="col-type">JSONB</span>
+                        </li>
+                        <li><span class="col-sys">created_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                        <li><span class="col-sys">updated_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                    </ul>
                 </div>
-                <!-- Card 2 -->
+
+                <!-- 2. Cuestionarios -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">📋</span>
-                        <h3>CUESTIONARIOS</h3>
+                        <h3>cuestionarios</h3>
                     </div>
-                    <p>Catálogo versionado de las pruebas psicológicas y aptitudinales disponibles en la plataforma.</p>
-                    <div class="kb-tag">UUID PK</div>
+                    <p class="table-desc">Catálogo versionado de las pruebas vocacionales disponibles, con banderas de
+                        estado activo.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">nombre</span> <span class="col-type">VARCHAR(200)</span></li>
+                        <li><span class="col-normal">version</span> <span class="col-type">VARCHAR(50)</span></li>
+                        <li><span class="col-normal">descripcion</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">activo</span> <span class="col-type">BOOLEAN</span></li>
+                        <li><span class="col-sys">created_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                        <li><span class="col-sys">updated_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                    </ul>
                 </div>
-                <!-- Card 3 -->
+
+                <!-- 3. Preguntas -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">❓</span>
-                        <h3>PREGUNTAS</h3>
+                        <h3>preguntas</h3>
                     </div>
-                    <p>El banco de ítems. Integra opciones múltiples en un campo JSONB, permitiendo UI dinámica sin tablas secundarias infitas.</p>
-                    <div class="kb-tag">FK → Cuestionario</div>
+                    <p class="table-desc">El banco de ítems atado en cascada a un test, integra opciones dinámicas
+                        utilizando matrices JSONB.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 cuestionario_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">texto</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">tipo</span> <span class="col-type">VARCHAR(50)</span></li>
+                        <li><span class="col-normal">orden</span> <span class="col-type">INTEGER</span></li>
+                        <li><span class="col-normal">categoria</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">peso</span> <span class="col-type">DECIMAL(3,2)</span></li>
+                        <li><span class="col-normal">opciones</span> <span class="col-type">JSONB</span></li>
+                        <li><span class="col-sys">created_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                    </ul>
                 </div>
-                <!-- Card 4 -->
+
+                <!-- 4. Resultados -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">📝</span>
-                        <h3>RESULTADOS</h3>
+                        <h3>resultados</h3>
                     </div>
-                    <p>Inmutables. Guardan la respuesta final del alumno y el diagnóstico vocacional estructurado de la sesión.</p>
-                    <div class="kb-tag">FK → Perfil & Cuestionario</div>
+                    <p class="table-desc">Tabla puente de métricas clave inmutables que guarda la respuesta en bruto del
+                        estudiante.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 perfil_usuario_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 cuestionario_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">respuestas</span> <span class="col-type">JSONB</span></li>
+                        <li><span class="col-normal">perfil_vocacional</span> <span class="col-type">JSONB</span></li>
+                        <li><span class="col-sys">fecha_realizacion</span> <span class="col-type">TIMESTAMPTZ</span>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Card 5 -->
+
+                <!-- 5. Instituciones -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">🏛️</span>
-                        <h3>INSTITUCIONES</h3>
+                        <h3>instituciones</h3>
                     </div>
-                    <p>Universidades e institutos técnicos avalados por la plataforma. Contiene información vital de contacto.</p>
-                    <div class="kb-tag">Catálogo</div>
+                    <p class="table-desc">Las universidades e institutos técnicos de todo el ecosistema. Posee
+                        información de contacto oficial.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">nombre</span> <span class="col-type">VARCHAR(200)</span></li>
+                        <li><span class="col-normal">tipo</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">ciudad</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">departamento</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">direccion</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">telefono</span> <span class="col-type">VARCHAR(50)</span></li>
+                        <li><span class="col-normal">email</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">sitio_web</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">costo_promedio</span> <span class="col-type">INTEGER</span></li>
+                        <li><span class="col-normal">activa</span> <span class="col-type">BOOLEAN</span></li>
+                    </ul>
                 </div>
-                <!-- Card 6 -->
+
+                <!-- 6. Programas -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">🎓</span>
-                        <h3>PROGRAMAS</h3>
+                        <h3>programas</h3>
                     </div>
-                    <p>La oferta académica real (ej. Ingeniería Civil). Modela costos, modalidades y requisitos técnicos.</p>
-                    <div class="kb-tag">FK → Institución</div>
+                    <p class="table-desc">Las Carreras Académicas en sí. Define las condiciones, el tipo de rama y su
+                        huella JSONB de compatibilidad.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 institucion_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">nombre</span> <span class="col-type">VARCHAR(200)</span></li>
+                        <li><span class="col-normal">tipo</span> <span class="col-type">VARCHAR(100)</span></li>
+                        <li><span class="col-normal">area_academica</span> <span class="col-type">VARCHAR(100)</span>
+                        </li>
+                        <li><span class="col-normal">duracion, modalidad</span> <span class="col-type">VARCHAR</span>
+                        </li>
+                        <li><span class="col-normal">descripcion, reqs...</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">costo_matricula</span> <span class="col-type">INTEGER</span></li>
+                        <li><span class="col-normal">perfil_compatible</span> <span class="col-type">JSONB</span></li>
+                        <li><span class="col-normal">activo</span> <span class="col-type">BOOLEAN</span></li>
+                    </ul>
                 </div>
-                <!-- Card 7 -->
+
+                <!-- 7. Convocatorias -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">📅</span>
-                        <h3>CONVOCATORIAS</h3>
+                        <h3>convocatorias</h3>
                     </div>
-                    <p>Fechas dinámicas de inscripción, cupos y estado, separadas inteligentemente de los Programas estáticos para no duplicar datos.</p>
-                    <div class="kb-tag">FK → Programa</div>
+                    <p class="table-desc">Separa la disponibilidad en el tiempo (fechas de adminisiones semestre I / II)
+                        del programa de estudios estático.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 programa_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">nombre</span> <span class="col-type">VARCHAR(200)</span></li>
+                        <li><span class="col-normal">fecha_apertura</span> <span class="col-type">DATE</span></li>
+                        <li><span class="col-normal">fecha_cierre</span> <span class="col-type">DATE</span></li>
+                        <li><span class="col-normal">cupos</span> <span class="col-type">INTEGER</span></li>
+                        <li><span class="col-normal">informacion_adicional</span> <span class="col-type">TEXT</span>
+                        </li>
+                        <li><span class="col-normal">activa</span> <span class="col-type">BOOLEAN (AS STORED)</span>
+                        </li>
+                        <li><span class="col-sys">created_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                    </ul>
                 </div>
-                <!-- Card 8 -->
+
+                <!-- 8. Recomendaciones -->
                 <div class="glass-card table-card hover-lift">
                     <div class="table-header">
                         <span class="emoji">🏆</span>
-                        <h3>RECOMENDACIONES</h3>
+                        <h3>recomendaciones</h3>
                     </div>
-                    <p>El Match. Une los resultados del test con la oferta del programa, dándole al usuario un porcentaje predictivo de éxito.</p>
-                    <div class="kb-tag">Matriz Cruzada</div>
+                    <p class="table-desc">La salida final del Algoritmo Predictivo. Se liga al usuario a través del
+                        resultado y marca compatibilidad.</p>
+                    <ul class="schema-list">
+                        <li><span class="col-pk">🔑 id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 programa_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-fk">🔗 resultado_id</span> <span class="col-type">UUID</span></li>
+                        <li><span class="col-normal">compatibilidad</span> <span class="col-type">DECIMAL(5,2)</span>
+                        </li>
+                        <li><span class="col-normal">razones</span> <span class="col-type">TEXT</span></li>
+                        <li><span class="col-normal">vista</span> <span class="col-type">BOOLEAN</span></li>
+                        <li><span class="col-sys">created_at</span> <span class="col-type">TIMESTAMPTZ</span></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -155,14 +261,16 @@
             <div class="code-showcase glass-card fade-in-up style-code">
                 <div class="code-block">
                     <h4>📝 Ejemplo de Inserción (INSERT)</h4>
-                    <p>Usado para inicializar la información base (**Seeds**) probando la solidez de las llaves foráneas.</p>
-                    <pre><code>INSERT INTO PROGRAMAS (id, institucion_id, nombre, costo_matricula, activo)
+                    <p>Usado para inicializar la información base (**Seeds**) probando la solidez de las llaves
+                        foráneas.</p>
+                    <pre><code>INSERT INTO programas (id, institucion_id, nombre, costo_matricula, activo)
 VALUES ('e23f5...', 'fa3a7...', 'Ingeniería de Software', 3500000, TRUE);</code></pre>
                 </div>
                 <div class="code-block">
                     <h4>⚡ Soft Deletes (UPDATE vs DELETE)</h4>
-                    <p>En el mundo real **casi nunca usamos DELETE**. Si una carrera se canceló en Brota, aplicamos un UPDATE para conservar registros estadísticos históricos.</p>
-                    <pre><code>UPDATE CONVOCATORIAS 
+                    <p>En el mundo real **casi nunca usamos DELETE**. Si una carrera se canceló en Brota, aplicamos un
+                        UPDATE para conservar registros estadísticos históricos.</p>
+                    <pre><code>UPDATE convocatorias 
 SET activa = FALSE, informacion_adicional = 'Cancelada'
 WHERE id = 'cc9f1f0...';</code></pre>
                 </div>
@@ -173,7 +281,8 @@ WHERE id = 'cc9f1f0...';</code></pre>
         <section id="queries" class="section">
             <div class="section-header fade-in-up">
                 <h2>🔍 10 Consultas Vitales</h2>
-                <p>Aprovechando SQL Avanzado (LIKE, BETWEEN, IN, IS NULL) para crear filtros predictivos, dashboards y motores de match.</p>
+                <p>Aprovechando SQL Avanzado (LIKE, BETWEEN, IN, IS NULL) para crear filtros predictivos, dashboards y
+                    motores de match.</p>
             </div>
 
             <div class="accordion">
@@ -182,17 +291,17 @@ WHERE id = 'cc9f1f0...';</code></pre>
                     <button class="accordion-btn">1. Filtros Geográficos Exclusivos <span class="tag">IN</span></button>
                     <div class="accordion-content">
                         <p>Segmenta instituciones exactas a las ciudades que el estudiante elija.</p>
-                        <pre><code>SELECT nombre, tipo, ciudad FROM INSTITUCIONES 
+                        <pre><code>SELECT nombre, tipo, ciudad FROM instituciones 
 WHERE ciudad IN ('Bogotá', 'Medellín', 'Cali');</code></pre>
                     </div>
                 </div>
-                
+
                 <!-- Query 2 -->
                 <div class="accordion-item glass-card">
                     <button class="accordion-btn">2. Autocompletado del Buscador <span class="tag">LIKE</span></button>
                     <div class="accordion-content">
                         <p>Permite al usuario encontrar carreras que contengan fragmentos de sus intereses.</p>
-                        <pre><code>SELECT nombre, modalidad FROM PROGRAMAS 
+                        <pre><code>SELECT nombre, modalidad FROM programas 
 WHERE nombre LIKE '%Ingeniería%';</code></pre>
                     </div>
                 </div>
@@ -202,7 +311,7 @@ WHERE nombre LIKE '%Ingeniería%';</code></pre>
                     <button class="accordion-btn">3. Ofertas según Presupuesto <span class="tag">BETWEEN</span></button>
                     <div class="accordion-content">
                         <p>Filtra programas cuyos costos de matrícula se ajustan a un rango determinado.</p>
-                        <pre><code>SELECT nombre, costo_matricula FROM PROGRAMAS 
+                        <pre><code>SELECT nombre, costo_matricula FROM programas 
 WHERE costo_matricula BETWEEN 1500000 AND 3000000;</code></pre>
                     </div>
                 </div>
@@ -212,16 +321,18 @@ WHERE costo_matricula BETWEEN 1500000 AND 3000000;</code></pre>
                     <button class="accordion-btn">4. Auditoría de Calidad <span class="tag">IS NULL</span></button>
                     <div class="accordion-content">
                         <p>Detecta universidades que olvidaron registrar teléfonos para forzar actualización.</p>
-                        <pre><code>SELECT nombre FROM INSTITUCIONES WHERE telefono IS NULL;</code></pre>
+                        <pre><code>SELECT nombre FROM instituciones WHERE telefono IS NULL;</code></pre>
                     </div>
                 </div>
 
                 <!-- Query 5 -->
                 <div class="accordion-item glass-card">
-                    <button class="accordion-btn">5. Targeting de Campañas <span class="tag">IN + BETWEEN</span></button>
+                    <button class="accordion-btn">5. Targeting de Campañas <span class="tag">IN +
+                            BETWEEN</span></button>
                     <div class="accordion-content">
-                        <p>Segmentación por edad colegial (15-17) y ciudad para enviar SMS publicitarios a regiones fijas.</p>
-                        <pre><code>SELECT nombre, edad FROM PERFILES_USUARIO 
+                        <p>Segmentación por edad colegial (15-17) y ciudad para enviar SMS publicitarios a regiones
+                            fijas.</p>
+                        <pre><code>SELECT nombre, edad FROM perfiles_usuario 
 WHERE edad BETWEEN 15 AND 17 AND ciudad IN ('Bucaramanga', 'Cartagena');</code></pre>
                     </div>
                 </div>
@@ -231,17 +342,19 @@ WHERE edad BETWEEN 15 AND 17 AND ciudad IN ('Bucaramanga', 'Cartagena');</code><
                     <button class="accordion-btn">6. Limpieza de Tests Viejos <span class="tag">LIKE</span></button>
                     <div class="accordion-content">
                         <p>Búsqueda de encuestas de diagnóstico que estén en fase '1.X'.</p>
-                        <pre><code>SELECT nombre, version FROM CUESTIONARIOS 
+                        <pre><code>SELECT nombre, version FROM cuestionarios 
 WHERE version LIKE '1.%' AND descripcion IS NOT NULL;</code></pre>
                     </div>
                 </div>
 
                 <!-- Query 7 -->
                 <div class="accordion-item glass-card">
-                    <button class="accordion-btn">7. Correos Universitarios Fidedignos <span class="tag">LIKE + IS NULL</span></button>
+                    <button class="accordion-btn">7. Correos Universitarios Fidedignos <span class="tag">LIKE + IS
+                            NULL</span></button>
                     <div class="accordion-content">
-                        <p>Filtra instituciones con correos `.edu.co` oficiales que aún no tienen web adjunta reportada.</p>
-                        <pre><code>SELECT nombre, email FROM INSTITUCIONES 
+                        <p>Filtra instituciones con correos `.edu.co` oficiales que aún no tienen web adjunta reportada.
+                        </p>
+                        <pre><code>SELECT nombre, email FROM instituciones 
 WHERE email LIKE '%@%.edu.co' AND sitio_web IS NULL;</code></pre>
                     </div>
                 </div>
@@ -250,31 +363,36 @@ WHERE email LIKE '%@%.edu.co' AND sitio_web IS NULL;</code></pre>
                 <div class="accordion-item glass-card">
                     <button class="accordion-btn">8. Calendario Próximo <span class="tag">BETWEEN</span></button>
                     <div class="accordion-content">
-                        <p>Obtiene todas las fechas de inscripciones a abrir el próximo semestre en particular (H1 2026).</p>
-                        <pre><code>SELECT nombre, fecha_apertura FROM CONVOCATORIAS 
+                        <p>Obtiene todas las fechas de inscripciones a abrir el próximo semestre en particular (H1
+                            2026).</p>
+                        <pre><code>SELECT nombre, fecha_apertura FROM convocatorias 
 WHERE fecha_apertura BETWEEN '2026-01-01' AND '2026-06-30';</code></pre>
                     </div>
                 </div>
 
                 <!-- Query 9 -->
                 <div class="accordion-item glass-card">
-                    <button class="accordion-btn">9. Seguridad de Prerrequisitos <span class="tag">IS NULL + IN</span></button>
+                    <button class="accordion-btn">9. Seguridad de Prerrequisitos <span class="tag">IS NULL +
+                            IN</span></button>
                     <div class="accordion-content">
-                        <p>Alerta. Busca carreras "Médicas/Exactas" a las que se olvidó indicar requisitos restrictivos en BD.</p>
-                        <pre><code>SELECT nombre FROM PROGRAMAS 
+                        <p>Alerta. Busca carreras "Médicas/Exactas" a las que se olvidó indicar requisitos restrictivos
+                            en BD.</p>
+                        <pre><code>SELECT nombre FROM programas 
 WHERE requisitos IS NULL AND area_academica IN ('Salud', 'Ciencias Exactas');</code></pre>
                     </div>
                 </div>
 
                 <!-- Query 10 -->
                 <div class="accordion-item glass-card">
-                    <button class="accordion-btn">10. Casos de Éxito y Super Match <span class="tag">BETWEEN + JOIN</span></button>
+                    <button class="accordion-btn">10. Casos de Éxito y Super Match <span class="tag">BETWEEN +
+                            JOIN</span></button>
                     <div class="accordion-content">
-                        <p>Cruza Usuarios y Recomendaciones para revelarMatches por encima del 90% (Excelente compatibilidad).</p>
+                        <p>Cruza Usuarios y Recomendaciones para revelar Matches por encima del 90% (Excelente
+                            compatibilidad).</p>
                         <pre><code>SELECT p.nombre, p.apellido, r.compatibilidad 
-FROM RECOMENDACIONES r
-INNER JOIN RESULTADOS rs ON r.resultado_id = rs.id
-INNER JOIN PERFILES_USUARIO p ON rs.perfil_usuario_id = p.id
+FROM recomendaciones r
+INNER JOIN resultados rs ON r.resultado_id = rs.id
+INNER JOIN perfiles_usuario p ON rs.perfil_usuario_id = p.id
 WHERE r.compatibilidad BETWEEN 90.00 AND 100.00;</code></pre>
                     </div>
                 </div>
@@ -291,60 +409,59 @@ WHERE r.compatibilidad BETWEEN 90.00 AND 100.00;</code></pre>
                 <div class="timeline-step glass-card hover-lift">
                     <div class="step-icon">1</div>
                     <h4>Visión y Negocio (Tablas de usuario)</h4>
-                    <p>El primero en hablar abre introduciendo "Qué es Brota". Expone el Diagrama MER en el núcleo del Estudiante, los Exámenes y sus Resultados.</p>
+                    <p>El primero en hablar abre introduciendo "Qué es Brota". Expone el Diagrama MER en el núcleo del
+                        Estudiante, los Exámenes y sus Resultados.</p>
                 </div>
                 <div class="timeline-step glass-card hover-lift">
                     <div class="step-icon">2</div>
                     <h4>Oferta y Ramillas Foráneas</h4>
-                    <p>El segundo presenta Instituciones y Programas. Pone pasión explicando la relación `[FK]` y cómo Brota conecta el mundo real con el usuario, generando Convocatorias.</p>
+                    <p>El segundo presenta Instituciones y Programas. Pone pasión explicando la relación `[FK]` y cómo
+                        Brota conecta el mundo real con el usuario, generando Convocatorias.</p>
                 </div>
                 <div class="timeline-step glass-card hover-lift">
                     <div class="step-icon">3</div>
-                    <h4>Inyecciones y Responsabilidad (DML)</h4>
-                    <p>El tercer estudiante explica por qué usamos UPDATE el 99% de los casos (Soft Delete) gracias al campo 'activo = false' asegurando integridad, además de como se logran las INSERCIONES masivas.</p>
+                    <h4>Inyecciones y DML</h4>
+                    <p>El tercer estudiante explica por qué usamos UPDATE el 99% de los casos, la seguridad RLS
+                        implementada y cómo se logran inserciones robustas.</p>
                 </div>
                 <div class="timeline-step glass-card hover-lift">
                     <div class="step-icon">4</div>
-                    <h4>El Motor en Acción (10 Selects)</h4>
-                    <p>El último cierra exhibiendo las sentencias. Detalla técnicamente los LIKE, IN, BETWEEN enfocándose en cómo cada consulta resuelve un "por qué" del negocio (Filtros, Buscadores).</p>
+                    <h4>Inteligencia DQL</h4>
+                    <p>El último cierra exhibiendo las sentencias. Detalla técnicamente los LIKE, IN, BETWEEN
+                        enfocándose en cómo cada consulta resuelve necesidades directas del Software.</p>
                 </div>
             </div>
         </section>
-        
+
         <footer>
             <div class="footer-content">
                 <p><strong>Brota - Orientación Vocacional Tecnológica</strong></p>
-                <p>Base de datos relacional robusta, orientada a eventos.</p>
+                <p>Base de datos relacional robusta, asegurada y testeada. PostgreSQL.</p>
             </div>
         </footer>
     </main>
 
-    <!-- Simples interacciones de UI -->
     <script>
-        // Funcionalidad básica del acordeón
         document.querySelectorAll('.accordion-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const content = btn.nextElementSibling;
                 const isOpen = content.style.maxHeight;
-                
-                // Cerrar todos
+
                 document.querySelectorAll('.accordion-content').forEach(c => {
                     c.style.maxHeight = null;
                     c.classList.remove('open');
                 });
-                
-                // Abrir el actual si no estaba abierto
+
                 if (!isOpen) {
                     content.style.maxHeight = content.scrollHeight + "px";
                     content.classList.add('open');
                 }
             });
         });
-        
-        // Elemento al hacer scroll (animación fade up)
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
@@ -353,4 +470,5 @@ WHERE r.compatibilidad BETWEEN 90.00 AND 100.00;</code></pre>
         document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
