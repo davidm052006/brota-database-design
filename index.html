@@ -258,24 +258,25 @@
                 <p>Las bases de datos no son estáticas. En Brota tomamos decisiones responsables con la información.</p>
             </div>
 
-            <!-- Nuevos Inserts Reales en Cuadritos -->
-            <div class="table-desc" style="margin-bottom: 2rem; text-align: center;">
-                <h4>📝 Población Inicial de Datos (Seeds)</h4>
-                <p>Colección de <strong>INSERTs reales</strong> que se inytectará en vivo para validar la robustez de
-                    las constraints.</p>
-            </div>
+            <!-- Contenedor Maestro: INSERTS -->
+            <div class="glass-card fade-in-up" style="padding: 2rem; margin-bottom: 3rem;">
+                <div class="table-desc" style="margin-bottom: 2rem; text-align: center;">
+                    <h2 style="color: #fff; margin-bottom: 0.5rem;">📝 Inserts: Población Inicial</h2>
+                    <p>Colección de <strong>INSERTs reales</strong> que se inytectará en vivo para validar la robustez
+                        de las constraints.</p>
+                </div>
 
-            <div class="grid-cards-large" style="margin-bottom: 2rem;">
+                <div class="grid-cards-large">
 
-                <!-- Perfiles -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">👥</span>
-                        <h3 style="font-size: 1rem;">INSERT perfiles_usuario</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO perfiles_usuario (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, edad, genero, nivel_educativo) 
+                    <!-- Perfiles -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">👥</span>
+                            <h3 style="font-size: 1rem;">INSERT perfiles_usuario</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO perfiles_usuario (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, edad, genero, nivel_educativo) 
 VALUES 
     ('Santiago', 'Andrés', 'Castillo', 'Mendoza', 16, 'Masculino', 'Grado 10'),
     ('Valentina', NULL, 'Osorio', 'Navarro', 17, 'Femenino', 'Grado 11'),
@@ -284,18 +285,18 @@ VALUES
     ('Nicolás', NULL, 'Bermúdez', 'Castro', 18, 'Masculino', 'Grado 11'),
     ('Mariana', 'Lucía', 'Cárdenas', 'Vargas', 16, 'Femenino', 'Grado 10'),
     ('Sebastián', 'Camilo', 'Ruiz', NULL, 17, 'Masculino', 'Grado 11');</code></pre>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Instituciones -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">🏛️</span>
-                        <h3 style="font-size: 1rem;">INSERT instituciones_educativas</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO instituciones_educativas (nombre, tipo, ciudad, direccion, telefono, email, sitio_web, costo_promedio, activa) 
+                    <!-- Instituciones -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🏛️</span>
+                            <h3 style="font-size: 1rem;">INSERT instituciones_educativas</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO instituciones_educativas (nombre, tipo, ciudad, direccion, telefono, email, sitio_web, costo_promedio, activa) 
 VALUES 
     ('Colegio San Patricio', 'Privado', 'Bogotá', 'Calle 123 # 45-67', '6011234567', 'contacto@...', '...', 1500000, true),
     ('Institución Educativa Distrital Simón Bolívar', 'Público', 'Bogotá', 'Carrera 10...', '6015559988', '...', '...', 0, true),
@@ -303,18 +304,18 @@ VALUES
     ('Institución Educativa Nacional', 'Público', 'Medellín', '...', '6049876543', '...', NULL, 50000, false),
     ('Gimnasio Los Andes', 'Privado', 'Cali', 'Avenida 6N...', '6023334455', '...', '...', 1850000, true),
     ('Instituto Técnico Industrial', 'Público', 'Bucaramanga', '...', '...', '...', '...', 20000, true);</code></pre>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Programas -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">🎓</span>
-                        <h3 style="font-size: 1rem;">INSERT programas</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO programas (nombre, descripcion, icono, activa) 
+                    <!-- Programas -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🎓</span>
+                            <h3 style="font-size: 1rem;">INSERT programas</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO programas (nombre, descripcion, icono, activa) 
 VALUES 
     ('Matemáticas', 'Estudio de los números...', 'fas fa-calculator', true),
     ('Ciencias Naturales', 'Comprensión del mundo físico...', 'fas fa-flask', true),
@@ -323,36 +324,36 @@ VALUES
     ('Idiomas Extranjeros', 'Aprendizaje de inglés...', 'fas fa-language', true),
     ('Ciencias Sociales', 'Historia y geografía...', 'fas fa-globe-americas', true),
     ('Mecanografía', 'Técnicas de escritura rápida...', 'fas fa-keyboard', false);</code></pre>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Areas de Estudio -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">📚</span>
-                        <h3 style="font-size: 1rem;">INSERT areas_de_estudio</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO areas_de_estudio (nombre, tipo, duracion, modalidad, descripcion, requisitos, costo_matricula, perfil_compatible, activo) 
+                    <!-- Areas de Estudio -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">📚</span>
+                            <h3 style="font-size: 1rem;">INSERT areas_de_estudio</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO areas_de_estudio (nombre, tipo, duracion, modalidad, descripcion, requisitos, costo_matricula, perfil_compatible, activo) 
 VALUES 
     ('Ingeniería de Sistemas y Computación', 'Pregrado', '10 semestres', 'Presencial', '...', '...', 6500000, '{"intereses": ["tecnología"]}'::jsonb, true),
     ('Tecnología en Desarrollo de Software', 'Tecnológico', '6 semestres', 'Virtual', '...', '...', 1800000, '{"intereses": ["apps"]}'::jsonb, true),
     ('Diplomado en Marketing Digital Estratégico', 'Diplomado', '120 horas', 'Híbrida', '...', '...', 1200000, '{"intereses": ["redes"]}'::jsonb, true),
     ('Especialización en Gerencia de Proyectos', 'Posgrado', '2 semestres', 'Presencial', '...', '...', 8500000, '{"intereses": ["liderazgo"]}'::jsonb, true);
     /* Y 2 Registros Adicionales */</code></pre>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Convocatorias -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">📅</span>
-                        <h3 style="font-size: 1rem;">INSERT convocatorias</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO convocatorias (nombre, fecha_apertura, fecha_cierre, cupos, informacion_adicional, activa)
+                    <!-- Convocatorias -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">📅</span>
+                            <h3 style="font-size: 1rem;">INSERT convocatorias</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO convocatorias (nombre, fecha_apertura, fecha_cierre, cupos, informacion_adicional, activa)
 VALUES 
     ('Jóvenes a la U - Semestre 2026-2', '2026-05-01', '2026-06-15', 4000, '...', true),
     ('Convocatoria SENA - Modalidad Virtual', '2026-04-01', '2026-04-15', 15000, '...', true),
@@ -360,18 +361,18 @@ VALUES
     ('Becas de Excelencia - ICETEX', '2025-10-01', '2025-11-30', 500, '...', false),
     ('Semillero de Programación', '2026-02-15', '2026-03-10', 150, '...', false),
     ('Admisiones Especiales - Técnicos', '2026-04-20', '2026-05-30', 800, '...', true);</code></pre>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Cuestionario e Ítems -->
-                <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
-                    <div class="table-header">
-                        <span class="emoji">📋</span>
-                        <h3 style="font-size: 1rem;">INSERT cuestionario y pregunta</h3>
-                    </div>
-                    <div class="code-block" style="flex-grow: 1;">
-                        <pre
-                            style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO cuestionario (nombre, version, descripcion, activo)
+                    <!-- Cuestionario e Ítems -->
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">📋</span>
+                            <h3 style="font-size: 1rem;">INSERT cuestionario y pregunta</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: 250px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>INSERT INTO cuestionario (nombre, version, descripcion, activo)
 VALUES 
     ('Test Holland', 'v2.1', 'Cuestionario clásico...', true),
     ('Inventario de Aptitudes', 'v1.5', 'Destrezas...', true),
@@ -385,20 +386,112 @@ VALUES
     ('Si tuvieras que organizar...', 'Selección', 2, 'Trabajo', 1.50, '[{"perfil": "Artístico"}]'::jsonb),
     ('Te resulta fácil la física...', 'Likert', 3, 'Investigador', 2.00, '[{"valor": 1}]'::jsonb);
     /* 2 Preguntas Adicionales */</code></pre>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
 
-            <!-- Soft Delete Showcase -->
-            <div class="code-showcase glass-card fade-in-up style-code delay-1">
-                <div class="code-block">
-                    <h4>⚡ Soft Deletes (UPDATE vs DELETE)</h4>
-                    <p>En el mundo real **casi nunca usamos DELETE**. Si una carrera se canceló en Brota, aplicamos un
-                        UPDATE para conservar registros estadísticos históricos.</p>
-                    <pre><code>UPDATE convocatorias 
-SET activa = FALSE, informacion_adicional = 'Cancelada'
-WHERE id = 'cc9f1f0...';</code></pre>
+            <!-- Contenedor Maestro: ACTUALIZACIÓN Y BORRADO -->
+            <div class="glass-card fade-in-up delay-1" style="padding: 2rem; margin-bottom: 2rem;">
+                <div class="table-desc" style="margin-bottom: 2rem; text-align: center;">
+                    <h2 style="color: #fff; margin-bottom: 0.5rem;">⚡ Actualización y Borrado de Datos</h2>
+                    <p>Operaciones estructurales dinámicas responsables del mantenimiento en la base de datos
+                        (Mutaciones directas).</p>
+                </div>
+
+                <div class="grid-cards-large">
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">✏️</span>
+                            <h3 style="font-size: 1rem;">UPDATE perfiles_usuario</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>UPDATE perfiles_usuario
+SET edad = 17, 
+    nivel_educativo = 'Grado 11'
+WHERE primer_nombre = 'Santiago' AND primer_apellido = 'Castillo';</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">✏️</span>
+                            <h3 style="font-size: 1rem;">UPDATE convocatorias</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>UPDATE convocatorias_estudio
+SET cupos = 5000,
+    activa = true
+WHERE nombre = 'Jóvenes a la U - Semestre 2026-2';</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🗑️</span>
+                            <h3 style="font-size: 1rem;">DELETE instituciones</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>DELETE FROM instituciones_educativas
+WHERE nombre = 'Institución Educativa Nacional';</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🗑️</span>
+                            <h3 style="font-size: 1rem;">DELETE programas</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>DELETE FROM programas_estudio
+WHERE activo = false;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">✏️</span>
+                            <h3 style="font-size: 1rem;">UPDATE programas</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>UPDATE programas_estudio
+SET costo_matricula = costo_matricula * 1.10
+WHERE tipo = 'Pregrado';</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🗑️</span>
+                            <h3 style="font-size: 1rem;">DELETE convocatorias</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>DELETE FROM convocatorias_estudio
+WHERE fecha_cierre < '2026-01-01';</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="glass-card table-card hover-lift" style="justify-content: flex-start; padding: 1rem;">
+                        <div class="table-header">
+                            <span class="emoji">🗑️</span>
+                            <h3 style="font-size: 1rem;">DELETE perfiles_usuario</h3>
+                        </div>
+                        <div class="code-block" style="flex-grow: 1;">
+                            <pre
+                                style="height: auto; max-height: 200px; overflow-y: auto; overflow-x: auto; font-size: 0.75rem; padding: 1rem; border-radius: 8px;"><code>DELETE FROM perfiles_usuario
+WHERE nivel_educativo IN ('Grado 10', 'Grado 11') 
+  AND edad >= 20;</code></pre>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
